@@ -21,11 +21,12 @@ class FasoNet(scrapy.Spider):
     def parse_infos(self, response):
         #retrieve post title and content
         post_title = response.xpath('//h1[@class = "entry-title"]/text()').extract()
-        post_content = response.xpath('')
+        post_content = response.xpath('//div[@class="col-xs-12 col-sm-12 col-md-8 col-lg-8"]')
+        post_content = post_content.xpath('//p/text()').extract()
         #Publication date
         publication_date = response.xpath('//content/div[0]/div[0]/div[0]/div[1]/p/text()').extract()
-        
         #retrieve comments
+        '''comments section'''
         
 
 process = CrawlerProcess()
